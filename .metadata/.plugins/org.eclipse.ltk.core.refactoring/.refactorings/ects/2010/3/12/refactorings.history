@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;/ects/WebRoot/fineAllOrder.jsp&apos; to &apos;findAllOrder.jsp&apos;&#x0D;&#x0A;- Original project: &apos;ects&apos;&#x0D;&#x0A;- Original element: &apos;fineAllOrder.jsp&apos;" description="Rename resource &apos;fineAllOrder.jsp&apos;" flags="7" id="org.eclipse.jdt.ui.rename.resource" input="WebRoot/fineAllOrder.jsp" name="findAllOrder.jsp" stamp="1268619061406" version="1.0"/>
+</session>

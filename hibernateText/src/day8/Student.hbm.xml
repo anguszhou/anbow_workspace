@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="day8">
+
+    <class name="Student" table="student">
+        <id name="id" column="id">
+        
+ 
+           <generator class="hilo">
+             <param name="table">test_id</param>        				
+        	 <param name="column">id</param>
+        	 <param name="max_lo">100</param>
+        	</generator>
+        	
+        	
+       <!--
+        	<generator class="sequence">
+        			<param name="sequence">test_seq</param>
+        	</generator>
+        		
+        		-->
+        		
+        		
+        </id>
+        
+        <property name="name" column="name"/>
+        <property name="password" column="password"/>
+    </class>
+
+</hibernate-mapping>

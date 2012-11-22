@@ -1,0 +1,102 @@
+package com.ambow.ects.web;
+
+
+import java.util.Collection;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.actions.MappingDispatchAction;
+
+
+import com.ambow.ects.dao.IProductDao;
+import com.ambow.ects.dao.impl.ProductDaoImp;
+import com.ambow.ects.util.PageController;
+
+public class ProductHandler extends MappingDispatchAction  {
+	
+	public ActionForward home(ActionMapping mapping, ActionForm form,
+			HttpServletRequest req, HttpServletResponse response)
+			throws Exception {
+		//排行yelei
+		IProductDao dao = new ProductDaoImp();
+		Collection rankProduct = dao.rankProduct();
+		req.getSession().setAttribute("rankProduct", rankProduct);
+		
+<<<<<<< .mine
+
+=======
+		//推荐商品
+		Collection promotedProduct = dao.findByPromoted();
+		req.getSession().setAttribute("promotedProduct", promotedProduct);
+		
+		//打折商品
+		Collection discProduct = dao.findByDiscount();
+		req.getSession().setAttribute("discProduct", discProduct);
+		System.out.println("========================disc"+discProduct.size()+"====================================");
+		
+		
+		//新货上市
+		Collection newProduct = dao.findByTime();
+		req.getSession().setAttribute("newProduct", newProduct);
+		
+>>>>>>> .r172
+		//此行不能少
+		req.setAttribute("first", false);
+		return mapping.findForward("index");
+	}
+	
+	public ActionForward detail(ActionMapping mapping, ActionForm form,
+			HttpServletRequest req, HttpServletResponse response)
+			throws Exception {
+		
+		int productId = Integer.parseInt(req.getParameter("productId"));
+		req.setAttribute("productDetail", new ProductDaoImp().findById(productId));
+				
+		return mapping.findForward("detail");
+	}	
+	
+	public ActionForward list(ActionMapping mapping, ActionForm form,
+			HttpServletRequest req, HttpServletResponse response)
+			throws Exception {
+		
+		IProductDao dao = new ProductDaoImp();
+		//获取分页控制器
+		PageController pc =(PageController) req.getSession().getAttribute("pageControl");
+		if(pc == null)
+		{			
+			pc = new PageController(dao.getTotal(),1,6);
+			req.getSession().setAttribute("pageController", pc);
+		}
+		
+		//目标页ID
+		int destPage = 1;
+		String strDestPage = req.getParameter("destId");
+		if(strDestPage != null && !strDestPage.equals(""))
+			destPage = Integer.parseInt(strDestPage);		
+		pc.setPageController(pc.getTotalRowsAmount(), destPage);
+		
+		//以下代码中只需要修改dao调用的函数即可
+		pc.setData(dao.find((destPage-1)*pc.getPageSize(), pc.getPageSize()));
+		
+		//构造分页选择器
+		StringBuffer selector = new StringBuffer();
+		int start = destPage>=6?destPage-5:1;
+		int end = destPage+5>=pc.getTotalPages()?pc.getTotalPages():destPage+5;
+		for (int i=start;i<destPage;i++)		
+			selector.append("<option value='").append(i).append("'>").append(i).append("</option>");
+		selector.append("<option selected='selected'>").append(destPage).append("</option>");
+		for (int i=destPage+1;i<=end;i++)		
+			selector.append("<option value='").append(i).append("'>").append(i).append("</option>");
+		
+		req.setAttribute("pageSelector",selector.toString() );
+		
+		return mapping.findForward("List");
+	}
+	
+	
+	
+}

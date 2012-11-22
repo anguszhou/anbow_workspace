@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ambow.hibernate.day2">
+
+    <class name="Student" table="student" lazy="false">
+        <id name="id">
+        	<!-- 测试hilo 
+        		<generator class="hilo">
+        				<param name="table">id_values</param>        				
+        				<param name="column">currentid</param>
+        				<param name="max_lo">10</param>
+        		</generator>
+        		
+        		<generator class="sequence">
+        				<param name="sequence">test_seq</param>
+        		</generator>
+       		
+       			<generator class="seqhilo"> 
+         			<param name="sequence">test_seq</param> 
+  	 				<param name="max_lo">10</param>
+       			</generator>
+       				<generator class="increment"/> 
+       		
+       				<generator class="native"/> 
+       				
+       		-->
+        </id>
+        <property name="name" />
+        <property name="password"/>
+    </class>
+
+</hibernate-mapping>

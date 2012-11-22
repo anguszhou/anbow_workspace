@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<<html>
+  <head>
+    <title>register</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=gbk" />
+  </head>
+  
+  <body>
+   <h2 align = "center">学生注册 </h2>
+   <hr>
+   <span id="pwd"> </span>
+   <form name= "formal" method="post" action="/webTest/servlet/day13/TestRegister">
+	   <table  width="600"  align="center" border="1"  >
+	     <tr>
+	        <td>用户名</td>
+	        <td><input name ="userName"  type="text" maxlength="10"  size="20"  value="root">
+	        </td>
+	        <td> 密码 </td>
+	        <td><input name = "password" type="password" maxlength="10"> </td>
+	      </tr>
+	      <tr>
+	         <td> 性别</td>
+	         <td>
+	             男   <input type="radio" name="gender" value="m" checked="checked">
+	             女   <input type="radio" name="gender" value="f" >
+	         </td>
+	         <td> 省份 </td>
+	         <td> 
+	            <select name ="province" size="1"  >
+	               <option  value="11" selected="selected"> 湖北 </option>
+	               <option  value="12"> 陕西 </option>
+	               <option  value="13"> 江苏 </option>
+	            </select> 
+	         </td>
+	       </tr>
+	       <tr>
+			<td>爱好</td>
+			<td colspan="3">
+				睡<input type="checkbox" name="hobbies" value="s">
+				吃<input type="checkbox" name="hobbies" value="e">
+				玩<input type="checkbox" name="hobbies" value="y">
+			</td>
+		</tr>
+	       <tr>
+	          <td valign="middle"> 介绍 </td>
+	          <td colspan="3">
+	              <textarea rows="6" cols="60">哈哈！！</textarea>
+	          </td>
+	       </tr>
+	         
+	   </table>
+	   <br>
+	   <br>
+	   <center>
+	       <input type="submit"  value="注册">&nbsp;
+	       <input type="reset"   value="重置">	   
+	   </center>
+   </form>
+   
+  </body>
+<</html>

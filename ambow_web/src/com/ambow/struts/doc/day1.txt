@@ -1,0 +1,70 @@
+Struts:
+
+	1:mvc的发展史
+		<1>no mvc
+		<2>:model 1
+				JSP + JAVABean 
+				缺点：jsp重用性差，代码业务逻辑在代码
+		<3>:model2
+				servlet+jsp+javabean
+				
+				
+		http://localhost:8080/ambowweb/user/login.func
+		
+		if
+		
+path(xml)						/user/login
+类
+方法
+转发  路径
+	
+	<a>
+	
+	</a>	
+				
+开发struts的步骤
+	1：导入struts项目所需要的jar文件(8个)
+	2：	做静态页面
+	3：配置struts的环境，在web.xml加上ActionServlet如下
+			<servlet>
+ 				<servlet-name>ActionServlet</servlet-name>
+ 				<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+ 			</servlet>
+ 	
+ 			<servlet-mapping>
+ 				<servlet-name>ActionServlet</servlet-name>
+ 				<url-pattern>*.do</url-pattern>
+ 			</servlet-mapping>
+ 	4：配置struts-config.xml
+ 	4:开发action 继承于Struts的action
+ 	
+执行流程：
+	<1>request======>web.xml===>装载struts-config.xml
+	
+			==>根据你的请求路径===》到struts-config.xml(匹配)
+			
+			==》匹配成功===》进入action==》做业务===》response
+				匹配不成功==》404
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+				
+				
+				
+				
+				
+				
+				

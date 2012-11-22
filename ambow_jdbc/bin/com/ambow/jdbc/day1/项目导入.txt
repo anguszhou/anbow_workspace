@@ -1,0 +1,68 @@
+/*****
+** allandou
+** 100301
+**/
+1:oracle和tomcat同时使用修改的端口号
+		(1)修改tomcat的端口号
+					apache-tomcat-6.0.18\conf\server.xml
+						<Connector port="8080" protocol="HTTP/1.1" 
+               connectionTimeout="20000" 
+               redirectPort="8443" />
+JDBC
+
+	(一)连接数据库的方式
+		 ODBC:
+				Open Database Connectivity
+				ODBC是Open Database Connect即开放数据库互连的简
+          称，它是由Microsoft 公司于1991 年提出的一个用于访问
+          数据库的统一界面标准，是应用程序和数据库系统之间的
+          中间件。它通过使用相应应用平台上和所需数据库对应的
+         驱动程序与应用程序的交互来实现对数据库的操作，避免
+         了在应用程序中直接调用与数据库相关的操作，从而提供 
+         了数据库的独立性。
+
+  	JDBC: 
+ 			Java Data Base Connectivity
+ 				Java Data Base Connectivity,java数据库连接是一种用于执行
+ 				SQL语句的Java API，可以为多种关系数据库提供统一访问，它
+ 				由一组用Java语言编写的类和接口组成。JDBC为工具/数据库开
+ 				发人员提供了一个标准的API，据	此可 以构建更高级的工具和
+ 				接口，	使数据库开发人员能够用纯 Java API 编写数据库应用
+ 				程序，同时，JDBC也是个商标名。 
+ 				
+ 		(二） JDBC的API的有两个主要部分组成
+
+				Java应用程序开发者的接口， Java编程语言开发
+
+					JDBC驱动程序开发商实现的接口
+		(三)JDBC 驱动程序的类型
+					1:JDBC-ODBC桥驱动及ODBC驱动程序
+					2:本地部份JAVA驱动
+					3：网络协议驱动 
+					4：本地协议驱动 
+		(四)JDBC开发的接口
+					 Driver
+ 					DriverManager
+					 Connection
+					 Statement
+					 PreparedStatement
+		(五)：jdbc注册驱动的方式及常用的database的url
+					一：注册驱动的方式
+						1：Class.forName("com.mysql.jdbc.Driver");
+						2：Driver driver = new com.mysql.jdbc.Driver();
+						3：通过命令行参数：
+							java —Djdbc.drivers=com.mysql.jdbc.Driver TestMysql
+					
+ 				  二：oracle和mysql的url
+ 				  		mysql的url：jdbc:mysql://ip/databasename
+ 				  		oracle的url：jdbc:oracle:thin:@ip:端口号（1521）:数据库实例
+ 				  		
+ 				  		
+ 			
+ 			
+ 			
+ 			
+ 			
+ 			
+ 			
+ 			

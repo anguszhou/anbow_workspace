@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+  
+  <servlet>
+ 			<!-- servlet的名字,这里可以随便取名 -->
+ 			<servlet-name>TimeServlet</servlet-name>
+ 			<!-- servlet类的全路径 -->
+ 			<servlet-class>day12.TimeServlet</servlet-class>
+ 						
+ 	</servlet>
+ 	
+ 	<servlet>
+ 			<!-- servlet的名字,这里可以随便取名 -->
+ 			<servlet-name>TestLife</servlet-name>
+ 			<!-- servlet类的全路径 -->
+ 			<servlet-class>day12.TestLife</servlet-class>
+ 			
+ 			<init-param>
+ 			   <param-name>USER_NAME</param-name>
+ 			   <param-value>zhoucong</param-value>
+ 			</init-param>
+ 			
+ 			<init-param>
+ 			   <param-name>PASSWORD</param-name>
+ 			   <param-value>88888</param-value>
+ 			</init-param>
+ 			
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		<!-- 这里的servlet的name一定要和上面的servletname的名称一样 -->
+ 			<servlet-name>TimeServlet</servlet-name>
+ 		<!-- 客户的请求的url -->
+ 			<url-pattern>/servlet/day12/TimeServlet</url-pattern>
+ 						
+ 	</servlet-mapping>
+ 	
+ 	<servlet-mapping>
+ 		<!-- 这里的servlet的name一定要和上面的servletname的名称一样 -->
+ 			<servlet-name>TestLife</servlet-name>
+ 		<!-- 客户的请求的url -->
+ 			<url-pattern>/servlet/day12/TestLife</url-pattern>
+ 						
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+ 			
+ 			<servlet-name>TestRegister</servlet-name>
+ 			
+ 			<servlet-class>day13.TestRegister</servlet-class>
+ 						
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		
+ 			<servlet-name>TestRegister</servlet-name>
+ 		
+ 			<url-pattern>/servlet/day13/TestRegister</url-pattern>
+ 						
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+ 			
+ 			<servlet-name>TestMysql</servlet-name>
+ 			
+ 			<servlet-class>day13.TestMysql</servlet-class>
+ 						
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		
+ 			<servlet-name>TestMysql</servlet-name>
+ 		
+ 			<url-pattern>/servlet/day13/TestMysql</url-pattern>
+ 						
+ 	</servlet-mapping>
+ 	
+</web-app>

@@ -1,0 +1,66 @@
+package com.ambow.ects.servlet;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.actions.MappingDispatchAction;
+import org.hibernate.Session;
+
+import com.ambow.ects.entity.Order;
+import com.ambow.ects.entity.OrderLine;
+import com.ambow.ects.entity.OrderStatus;
+import com.ambow.ects.entity.PayWay;
+import com.ambow.ects.entity.ShopCart;
+import com.ambow.ects.entity.User;
+import com.ambow.ects.util.HibernateUtil;
+
+public class OrderAction extends MappingDispatchAction
+{
+
+	public ActionForward orderList(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception
+	{
+		ActionForward forward = null;
+		
+		if(request.getSession().getAttribute("cart")==null)
+		{
+			request.getSession(true);
+			ShopCart cart = new ShopCart();
+			request.getSession().setAttribute("cart", cart);
+		}
+		ShopCart cart=(ShopCart)request.getSession().getAttribute("cart");
+		
+		Order order = new Order ();
+		User user = (User)request.getSession().getAttribute("user");
+		int paywayId = Integer.parseInt(request.getParameter("payWay"));
+		
+		OrderStatus status = new OrderStatus();
+		status.setId(1);
+		status.setName("配货状态");
+		status.setDescriptions("订单正在配货状态三天内将发出");
+		
+		Session session = HibernateUtil.getSesstion();
+		session.getTransaction().begin();
+		String hql="from PayWay payway where payway.id=:paywayId";
+		PayWay payway=(PayWay)session.createQuery(hql).setInteger("paywayId", paywayId).uniqueResult();
+		session.getTransaction().commit();
+		
+		order=cart.getOrder();
+		order.setName(user.getName());
+		order.setCost(cart.getTotal());
+		order.setUser(user);
+		order.setPayWay(payway);
+		order.setStatus(status);
+		
+		for (OrderLine orderline : order.getOrderlines())
+		{
+			
+		}
+		
+		return forward;
+	}
+}

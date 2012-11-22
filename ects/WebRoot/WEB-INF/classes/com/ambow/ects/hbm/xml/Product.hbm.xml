@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="gbk"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping  package="com.ambow.ects.entity" >
+
+	<class name="Product"  table="product"  >
+		<id name="id" column="Product_id" unsaved-value="null" >
+			<generator class="native"/>
+		</id>
+		
+        <property name="name"                 column="name" ></property>
+      <property name="author"                 column="author" ></property>
+       <property name="pages"                 column="pages" ></property>
+      <property name="images"                 column="images" ></property>
+       <property name="publish"                 column="publish" ></property>
+       <property name="basePrice"                 column="basePrice" ></property>
+      <property name="descriptions"                 column="descriptions" ></property>
+     
+     <many-to-one name="category" column="category_id"
+                     lazy="false" ></many-to-one>
+	
+    </class>
+</hibernate-mapping>

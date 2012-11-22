@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="gbk"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<!--  
+		<form-beans>
+			<form-bean name="loginForm" type="com.ambow.struts.form.LoginForm"></form-bean>
+		</form-beans>
+		-->
+		<action-mappings>
+					
+			<action path="/addOrderLine" type="com.ambow.ects.servlet.CartAction" parameter="addOrderLine" >
+				
+					<forward name="OrderLineList" path="/cart.jsp"/>								
+				
+			</action>
+			<action path="/deleteOrderLine" type="com.ambow.ects.servlet.CartAction" parameter="deleteCart" >
+				
+					<forward name="deleteOrderLine" path="/cart.jsp"/>								
+				
+			</action>
+			
+			<action path="/modifyCart" type="com.ambow.ects.servlet.CartAction" parameter="modifyCart" >
+				
+					<forward name="modifyCart" path="/cart.jsp"/>								
+				
+			</action>
+			
+			<action path="/deleteProduct" type="com.ambow.ects.servlet.CartAction" parameter="deleteProduct" >
+				
+					<forward name="deleteProduct" path="/cart.jsp"/>								
+				
+			</action>
+			
+			
+			
+			<action path="/orderList" type="com.ambow.ects.servlet.OrderAction" parameter="orderList" >
+				
+					<forward name="orderList" path="/findAllOrder.jsp"/>								
+				
+			</action>
+			
+			<action path="/showOrder" type="com.ambow.ects.servlet.OrderAction" parameter="showOrder" >
+				
+					<forward name="showOrder" path="/order_detail.jsp"/>								
+				
+			</action>
+			<action path="/logout" type="com.ambow.ects.servlet.OrderAction" parameter="logout" >
+				
+					<forward name="logout" path="/index.jsp"/>								
+				
+			</action>
+		</action-mappings>
+
+</struts-config>

@@ -1,0 +1,51 @@
+/****
+** allandou
+** 100304
+** Hibernate_day1
+**/
+
+开源
+规范：sun
+1:读取配置文件
+属性文件（hibernate.properties）。
+调用代码：Configuration cfg = new Configuration(); 
+Xml文件（hibernate.cfg.xml）。
+调用代码：Configuration cfg = new Configuration().configure();
+2：获得sessionFactory
+SessionFactory sessionFactory = cfg.buildSessionFactory();
+3：获得session
+Session session = sessionFactory.openSession();
+
+session.save()
+4:事务
+Transaction tx = session.beginTransaction();
+5：query
+Query query = session.createQuery(“from User”); 
+
+Hibernate: 
+    insert 
+    into
+        student
+        (name, password, id) 
+    values
+        (?, ?, ?)
+        
+        
+    select
+        student0_.id as id0_,
+        student0_.name as name0_,
+        student0_.password as password0_ 
+    from
+        student student0_
+[1,icexu,4444]
+[2,allan,16]
+
+get和load
+
+		1：当数据库有信息的时候get和load都能返回，如果数据库没有
+		  当前的信息，get方法返回的是null，load方法是抛异常
+
+
+
+
+

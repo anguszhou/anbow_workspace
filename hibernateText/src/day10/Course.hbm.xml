@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="day10">
+
+    <class name="Course" table="course">
+        <id name="id">
+        	<generator class="native"></generator>
+        </id>
+        <property name="name" column="name"/>
+        <set name="teachers" table="teacher_course">
+       	<key column="courseid"></key>
+       	<many-to-many class="Teacher" column="teacherid"></many-to-many>
+       </set>
+    </class>
+
+</hibernate-mapping>

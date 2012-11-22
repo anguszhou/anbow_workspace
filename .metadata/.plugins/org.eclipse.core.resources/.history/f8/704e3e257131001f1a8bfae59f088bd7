@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>	
+	<title>Auto Parts</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<%@ page contentType="text/html; charset=gbk"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <SCRIPT src="js/flashobj.js" type=text/javascript></SCRIPT>
+    
+</head>
+<body>
+<div id="wrap">
+
+	  
+	   <c:if test="${first == null || first == true}">
+			<jsp:forward page="/home.do"></jsp:forward>
+	   </c:if>
+	   <!-- 顶栏 -->
+       <div class="header">        
+       	   <jsp:include page="common/menu.jsp"></jsp:include>
+       </div>
+        
+       <!-- 搜索栏 -->
+       <jsp:include page="common/search.jsp"></jsp:include>
+       
+       <div class="center_content">
+       		<!-- 左侧栏 -->
+	        <div class="left_content">	        	 
+	        	<jsp:include page="common/left.jsp"></jsp:include>
+	        </div>
+	        <!-- 以下到右侧栏之前均为页面主体内容 -->
+        	<div class="right_content">        	
+	            <div class="title">
+	            	<span class="title_icon">
+	            		<img src="images/bullet1.gif" />
+	            	</span>
+	            	焦点商品
+	            </div>        
+	        	<div class="feat_prod_box">
+					  <div class=focusFlash>
+							<div id=sasFlashFocus27></div>
+							<script>
+							var sohuFlash2 = new sohuFlash("flash/demo001.swf", "27", 522, 245, "7");
+							sohuFlash2.addParam("quality", "high");
+							sohuFlash2.addParam("wmode", "opaque");
+							sohuFlash2.addVariable("image","images/01.jpg|images/02.jpg|images/03.jpg|images/04.jpg|");
+							sohuFlash2.addVariable("url","http://www.ooopic.com/|http://www.ooopic.com/|http://www.ooopic.com/|http://www.ooopic.com/");
+							sohuFlash2.addVariable("info", "我图网焦点图1|我图网焦点图2|我图网焦点图3|我图网焦点图4|");
+							sohuFlash2.addVariable("stopTime","5000");
+							sohuFlash2.write("sasFlashFocus27");
+							</script>
+					   </div>	                	           	
+	            	<div class="clear"></div>
+	            </div>
+	        	
+	            
+	            
+            
+           		<div class="title">
+           			<span class="title_icon">
+           				<img src="images/bullet2.gif"/>
+           			</span>
+           			特价商品
+           		</div>           
+           		<div class="new_products">  
+	           		<c:forEach items="${discProduct}" var="product" varStatus="status">        
+	                    <div class="new_prod_box">
+	                        <div class="new_prod_bg">
+	                        	<span class="new_icon"><img src="images/promo_icon.gif" alt="" title="" /></span>
+	                       		<a href="productDetail.do?productId=${product.id }"><img src="images/${ product.images } " alt="" title="" class="thumb" border="0" /></a>
+	                        </div>
+	                        <a >${product.name }</a>  
+	                        <a >${product.basePrice }</a>        
+	                   </div> 
+	           		</c:forEach> 
+           		</div>
+           		<a href="special.do" class="more">- 更多 -</a>
+       			<div class="clear"></div>
+       			
+       
+       
+        		<div class="title">
+        			<span class="title_icon">
+        				<img src="images/bullet2.gif" />
+        			</span>
+        			新货上架
+        		</div>           
+           		<div class="new_products">  
+	           		<c:forEach items="${newProduct}" var="product" varStatus="status">         
+	                    <div class="new_prod_box">
+	                        <div class="new_prod_bg">
+	                        <span class="new_icon"><img src="images/new_icon.gif" alt="" title="" /></span>
+	                        <a href="productDetail.do?productId=${product.id }"><img src="images/${ product.images }" alt="" title="" class="thumb" border="0" /></a>
+	                        </div>      
+	                       	<a >${product.name }</a>  
+	                        <a >${product.basePrice }</a>       
+	                    </div>
+                    </c:forEach>
+           		</div> 
+           		<a href="newProduct.do" class="more">- 更多 -</a>
+       			<div class="clear"></div>
+       			
+       
+         
+           		<div class="title">
+           			<span class="title_icon">
+           				<img src="images/bullet2.gif"/>
+           			</span>
+           			推荐商品
+           		</div>           
+          		<div class="new_products">  
+	           		<c:forEach items="${promotedProduct}" var="product" varStatus="status">         
+	                    <div class="new_prod_box">
+	                        <div class="new_prod_bg">
+	                        <span class="new_icon"><img src="images/new_icon.gif" alt="" title="" /></span>
+	                        <a href="productDetail.do?productId=${product.id }"><img src="images/${ product.images }" alt="" title="" class="thumb" border="0" /></a>
+	                        </div>      
+	                       	<a >${product.name }</a>  
+	                        <a >${product.basePrice }</a>       
+	                    </div>
+                    </c:forEach>
+           		</div> 
+           		<a href="promotedProduct.do" class="more">- 更多 -</a>
+       			<div class="clear"></div>
+      	   </div>
+      	   <!-- 右侧栏 -->
+	       <div class="rank_content">	       		
+	       		<jsp:include page="common/right.jsp"></jsp:include>
+	       </div>
+	       <!-- 底栏 -->
+	       <jsp:include page="common/footer.jsp"></jsp:include>        
+       </div>
+</div>
+
+</body>
+</html>

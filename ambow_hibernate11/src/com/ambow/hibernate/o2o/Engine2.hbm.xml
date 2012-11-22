@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ambow.hibernate.o2o">
+
+    <class name="Engine" table="ambow_engine_pk">
+        <id name="id">
+       				<generator class="foreign">
+       					<param name="property">car</param>
+       				</generator> 
+        </id>
+        <property name="nu" column="nu"/>
+    <one-to-one name="car" class="Car" constrained="true"></one-to-one>
+    </class>
+
+</hibernate-mapping>

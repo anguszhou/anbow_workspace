@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 1 elements(s) to &apos;ects/src/com.ambow.ects.util&apos;&#x0D;&#x0A;- Original project: &apos;hibernateText&apos;&#x0D;&#x0A;- Destination element: &apos;ects/src/com.ambow.ects.util&apos;&#x0D;&#x0A;- Original element: &apos;util.HibernateUtil.java&apos;" description="Copy compilation unit" destination="/src&lt;com.ambow.ects.util" element1="/src&lt;util{HibernateUtil.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" log="/src&lt;util{HibernateUtil.java&#x09;true&#x09;false" policy="org.eclipse.jdt.ui.copyResources" stamp="1267962656187" units="1" version="1.0"/>
+</session>

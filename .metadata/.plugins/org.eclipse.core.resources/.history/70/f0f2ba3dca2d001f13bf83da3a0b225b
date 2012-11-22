@@ -1,0 +1,91 @@
+package com.ambow.ects.servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ControllServlet extends HttpServlet
+{
+
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		String path = request.getServletPath();
+		
+		path = path.substring(0, path.lastIndexOf("."));
+		
+		if(path.equals("/ShowProductServlet1"))
+		{
+			ShowProductServlet hander1 = new ShowProductServlet();
+			
+			hander1.showProduct(request, response);
+						
+		}
+		else if(path.equals("/ShowProductServlet"))
+		{
+			ShowProductServlet hander2 = new ShowProductServlet();
+			
+			hander2.showCategory(request, response);
+		}	
+		else if(path.equals("/AddUserServlet"))
+		{
+			AddUserServlet hander3 = new AddUserServlet();
+			
+			hander3.addUser(request, response);
+		}
+		else if(path.equals("/AddUserServlet1"))
+		{
+			AddUserServlet hander3 = new AddUserServlet();
+			
+			hander3.toRegister(request, response);
+		}
+		else if(path.equals("/Login"))
+		{
+			AddUserServlet hander3 = new AddUserServlet();
+			
+			hander3.toLogin(request, response);
+		}
+		else if(path.equals("/LoginUserServlet"))
+		{
+			LoginUserServlet hander4 = new LoginUserServlet();
+			
+			hander4.Login(request, response);
+		}	
+		else if(path.equals("/UpdateUserServlet "))
+		{
+			UpdateUserServlet  hander4 = new UpdateUserServlet ();
+			
+			hander4.UpdateUser(request, response);
+		}
+		else if(path.equals("/servlet/jsp/UpdateUserServlet "))
+		{
+			UpdateUserServlet  hander4 = new UpdateUserServlet ();
+			
+			hander4.UpdateUser(request, response);
+		}	
+		else 
+		{
+		ShowErrorServlet hander = new ShowErrorServlet();
+		
+		hander.viewError(request, response);
+	    }
+	}
+
+		
+		
+	
+
+	
+	
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		doGet(request, response);
+	}
+
+}

@@ -1,0 +1,8 @@
+package com.ambow.ects.servlet;
+
+import org.apache.struts.actions.MappingDispatchAction;
+
+public class CartAction extends MappingDispatchAction
+{
+
+}

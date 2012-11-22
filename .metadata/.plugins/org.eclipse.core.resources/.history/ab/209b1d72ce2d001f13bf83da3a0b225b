@@ -1,0 +1,302 @@
+<%@ page contentType="text/html; charset=GBK" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+		<title>Auto Parts</title>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<script language="javascript">
+			function check_null(caller){
+				
+				if(caller.value.length == 0)
+				{
+					alert("该项不能为空");
+					caller.focus(); 
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+
+			<div class="header">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.gif" alt="" title=""
+							border="0" />
+					</a>
+				</div>
+				<div id="menu">
+					<ul>
+						<li class="selected">
+							<a href="index.jsp">主页</a>
+						</li>
+						<li>
+							<a href="about.jsp">关于我们</a>
+						</li>
+						<li>
+							<a href="category.jsp">商品种类</a>
+						</li>
+						<li>
+							<a href="specials.jsp">特价商品</a>
+						</li>
+						<li>
+							<a href="myaccount.jsp">登录</a>
+						</li>
+						<li>
+							<a href="register.jsp">注册</a>
+						</li>
+												
+						  <li><a href="account.jsp">账户管理</a></li>
+					</ul>
+				</div>
+			</div>
+
+
+			<div  class="center_content" >
+
+				<div >
+					<div class="title" style="margin-left:90px;">
+						<span class="title_icon"><img src="images/bullet1.gif" />
+						</span>账户管理
+					</div>
+
+					<div class="feat_prod_box_details" >
+						
+						<div  class="contact_form"  style="margin-left:150px;width:65%;">
+							<div class="form_subtitle">
+								修改用户信息
+							</div>
+							
+							<form style="padding-left:5%;">
+								<table>
+									<tr>
+										<td>用户名：</td>
+										<td>
+											<input /><font color="red">*用户名可以由6-20个字母或数字组成</font>
+										</td>
+									</tr>
+									<tr>
+										<td>密码：</td>
+										<td><input /><font color="red">*用户名可以由6-20个字母或数字组成</font></td>
+									</tr>
+									<tr>
+										<td>确认密码：</td>
+										<td><input /><font color="red">*请重新输入以上密码</font></td>
+									</tr>
+									<tr>
+										<td>所在地区：</td>
+										<td>
+											<select>
+											<option value="1">
+												中国
+											</option>
+										</select>
+										<select >
+											<option value="1" selected="selected">安徽</option>
+
+											<option value="2">
+												北京
+											</option>
+
+											<option value="3">
+												重庆
+											</option>
+
+											<option value="4">
+												福建
+											</option>
+
+											<option value="5">
+												广东
+											</option>
+
+											<option value="6">
+												甘肃
+											</option>
+
+											<option value="7">
+												广西
+											</option>
+
+											<option value="8">
+												贵州
+											</option>
+
+											<option value="9">
+												河南
+											</option>
+
+											<option value="10">
+												湖北
+											</option>
+
+											<option value="11">
+												河北
+											</option>
+
+											<option value="12">
+												海南
+											</option>
+
+											<option value="13">
+												香港
+											</option>
+
+											<option value="14">
+												黑龙江
+											</option>
+
+											<option value="15">
+												湖南
+											</option>
+
+											<option value="16">
+												吉林
+											</option>
+
+											<option value="17">
+												江苏
+											</option>
+
+											<option value="18">
+												江西
+											</option>
+
+											<option value="19">
+												辽宁
+											</option>
+
+											<option value="20">
+												澳门
+											</option>
+
+											<option value="21">
+												内蒙古
+											</option>
+
+											<option value="22">
+												宁夏
+											</option>
+
+											<option value="23">
+												青海
+											</option>
+
+											<option value="24">
+												四川
+											</option>
+
+											<option value="25">
+												山东
+											</option>
+
+											<option value="26">
+												上海
+											</option>
+
+											<option value="27">
+												陕西
+											</option>
+
+											<option value="28">
+												山西
+											</option>
+
+											<option value="29">
+												天津
+											</option>
+
+											<option value="30">
+												台湾
+											</option>
+
+											<option value="31">
+												新疆
+											</option>
+
+											<option value="32">
+												西藏
+											</option>
+
+											<option value="33">
+												云南
+											</option>
+
+											<option value="34">
+												浙江
+											</option>
+
+											<option value="35">
+												其它
+											</option>
+										</select>
+										省
+										<input type="text" size="10"/>市/县
+										</td>
+									</tr>
+									<tr>
+										<td >联系地址1：</td>
+										<td><input type="text" size="35"/></td>
+									</tr>
+									<tr>
+										<td >联系地址2：</td>
+										<td><input type="text" size="35" /></td>
+									</tr>
+									<tr>
+										<td >办公室电话</td>
+										<td><input type="text" size="15" /></td>
+									</tr>
+									<tr>
+										<td >手机</td>
+										<td><input type="text" size="15" /></td>
+									</tr>
+									<tr>
+										<td >Email地址：</td>
+										<td ><input type="text" size="32" /><font color="red">*请输入有效的邮件地址</font>
+										</td>
+									</tr>
+								</table>
+								<div class="form_row">
+									<div class="terms">
+										<input type="checkbox" name="terms" />
+										I agree to the
+										<a href="#">terms &amp; conditions</a>
+									</div>
+								</div>
+								<div style="padding-left:30px;">
+									<button >确定</button>
+									<button style="margin-left:30px;">取消</button>
+								</div>
+                                <br />
+							</form>
+						</div>
+
+					</div>
+					<div class="clear"></div>
+				</div>
+				
+				<div class="clear"></div>
+			</div>
+			
+
+
+			<div class="footer">
+				<div class="left_footer">
+					<img src="images/footer_logo.gif" alt="" title="" />
+					<br />
+					<a href="http://csscreme.com/freecsstemplates/"
+						title="free templates">
+					</a>
+				</div>
+				<div class="right_footer">
+					<a href="#">home</a>
+					<a href="#">about us</a>
+					<a href="#">services</a>
+					<a href="#">privacy policy</a>
+					<a href="#">contact us</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

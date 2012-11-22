@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ambow.hibernate.o2o">
+    <class name="Car" table="ambow_car">
+        <id name="id">
+       		<generator class="native"/> 
+        </id>
+        <property name="name" column="name"/>
+    	<one-to-one name="engine" class="Engine" cascade="all" property-ref="car"></one-to-one>
+    </class>
+</hibernate-mapping>

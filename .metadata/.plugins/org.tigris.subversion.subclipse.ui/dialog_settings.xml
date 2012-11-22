@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="CommitDialog.location.y" value="220"/>
+	<item key="DifferencesDialog.location.y" value="265"/>
+	<item key="DifferencesDialog.location.x" value="263"/>
+	<item key="CommitDialog.size.x" value="525"/>
+	<item key="CommitDialog.weights.0" value="555"/>
+	<item key="ExportRemoteFolderDialog.location.y" value="347"/>
+	<item key="CommitDialog.size.y" value="416"/>
+	<item key="ExportRemoteFolderDialog.size.y" value="225"/>
+	<item key="CommitDialog.weights.1" value="444"/>
+	<item key="DifferencesDialog.size.x" value="755"/>
+	<item key="ExportRemoteFolderDialog.location.x" value="476"/>
+	<item key="CommitDialog.location.x" value="378"/>
+	<item key="ExportRemoteFolderDialog.size.x" value="328"/>
+	<item key="DifferencesDialog.size.y" value="348"/>
+	<section name="NewLocationWizard">
+		<list key="ConfigurationWizardMainPage.STORE_URL_ID">
+			<item value="https://172.1.11.31:8443/svn/notepad/project"/>
+			<item value="https://172.1.11.70:8443/svn/projectdb"/>
+			<item value="https://172.1.11.32:8443/svn/projectdb"/>
+			<item value="http://172.1.11.32:8443/svn/projectdb"/>
+			<item value="http://172.1.11.32.8443/svn/projectdb"/>
+		</list>
+	</section>
+</section>

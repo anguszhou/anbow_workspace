@@ -1,0 +1,18 @@
+/****
+** allandou
+** 100304
+** Hibernate_day2
+**/
+
+ID生成策略
+	1:hilo(跨任何数据库)
+		<generator class="hilo">
+        		<param name="table">id_values</param>        				
+        		<param name="column">currentid</param>
+        		<param name="max_lo">10</param>
+        </generator>
+     2:sequence 
+     	建立sequnece的语法：  
+     		create sequence sequence_name start with 1  increment by 1;
+		
+			create sequence test_seq start with 1 increment by 1

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+ 			
+ 			<servlet-name>TestMysql</servlet-name>
+ 			
+ 			<servlet-class>day13.TestMysql</servlet-class>
+ 						
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		
+ 			<servlet-name>TestMysql</servlet-name>
+ 		
+ 			<url-pattern>/servlet/day13/TestMysql</url-pattern>
+ 						
+ 	</servlet-mapping>
+	
+	
+	<servlet>
+ 			
+ 			<servlet-name>TestDao</servlet-name>
+ 			
+ 			<servlet-class>test.TestDao</servlet-class>
+ 						
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		
+ 			<servlet-name>TestDao</servlet-name>
+ 		
+ 			<url-pattern>/servlet/test/TestDao</url-pattern>
+ 						
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+ 			
+ 			<servlet-name>TestAccount</servlet-name>
+ 			
+ 			<servlet-class>test.TestAccount</servlet-class>
+ 						
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		
+ 			<servlet-name>TestAccount</servlet-name>
+ 		
+ 			<url-pattern>/servlet/test/TestAccount</url-pattern>
+ 						
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+ 			
+ 			<servlet-name>TestUser</servlet-name>
+ 			
+ 			<servlet-class>test.TestUser</servlet-class>
+ 						
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		
+ 			<servlet-name>TestUser</servlet-name>
+ 		
+ 			<url-pattern>/servlet/test/TestUser</url-pattern>
+ 						
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+ 			
+ 			<servlet-name>TestLoad</servlet-name>
+ 			
+ 			<servlet-class>test.TestLoad</servlet-class>
+ 						
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		
+ 			<servlet-name>TestLoad</servlet-name>
+ 		
+ 			<url-pattern>/servlet/test/TestLoad</url-pattern>
+ 						
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+ 			
+ 			<servlet-name>ControllServlet</servlet-name>
+ 			
+ 			<servlet-class>com.ambow.ects.servlet.ControllServlet</servlet-class>
+ 						
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		
+ 			<servlet-name>ControllServlet</servlet-name>
+ 		
+ 			<url-pattern>*.func</url-pattern>
+ 						
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+ 			
+ 			<servlet-name>ShowOrderServlet</servlet-name>
+ 			
+ 			<servlet-class>com.ambow.ects.servlet.ShowOrderServlet</servlet-class>
+ 						
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		
+ 			<servlet-name>ShowOrderServlet</servlet-name>
+ 		
+ 			<url-pattern>/servlet/mvc/ShowOrderServlet</url-pattern>
+ 						
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+ 			
+ 			<servlet-name>ShowProductServlet</servlet-name>
+ 			
+ 			<servlet-class>com.ambow.ects.servlet.ShowProductServlet</servlet-class>
+ 						
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		
+ 			<servlet-name>ShowProductServlet</servlet-name>
+ 		
+ 			<url-pattern>/servlet/mvc/ShowProductServlet</url-pattern>
+ 						
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+ 			
+ 			<servlet-name>AddUserServlet</servlet-name>
+ 			
+ 			<servlet-class>com.ambow.ects.servlet.AddUserServlet</servlet-class>
+ 						
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		
+ 			<servlet-name>AddUserServlet</servlet-name>
+ 		
+ 			<url-pattern>/servlet/mvc/AddUserServlet</url-pattern>
+ 						
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+ 			
+ 			<servlet-name>ShowErrorServlet</servlet-name>
+ 			
+ 			<servlet-class>com.ambow.ects.servlet.ShowErrorServlet</servlet-class>
+ 						
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		
+ 			<servlet-name>ShowErrorServlet</servlet-name>
+ 		
+ 			<url-pattern>/servlet/mvc/ShowErrorServlet</url-pattern>
+ 						
+ 	</servlet-mapping>
+ 	<servlet>
+ 			
+ 			<servlet-name>LoginUserServlet</servlet-name>
+ 			
+ 			<servlet-class>com.ambow.ects.servlet.LoginUserServlet</servlet-class>
+ 						
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		
+ 			<servlet-name>LoginUserServlet</servlet-name>
+ 		
+ 			<url-pattern>/servlet/mvc/LoginUserServlet</url-pattern>
+ 						
+ 	</servlet-mapping>
+ 	
+ 	
+ 	<servlet>
+ 			
+ 			<servlet-name>UpdateUserServlet </servlet-name>
+ 			
+ 			<servlet-class>com.ambow.ects.servlet.UpdateUserServlet </servlet-class>
+ 						
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		
+ 			<servlet-name>UpdateUserServlet </servlet-name>
+ 		
+ 			<url-pattern>/servlet/mvc/UpdateUserServlet </url-pattern>
+ 						
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+ 		
+ 				<servlet-name>ActionServlet</servlet-name>
+ 				
+ 				<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+ 			
+ 				  <init-param>
+      					<param-name>config</param-name>
+     				 <param-value>/WEB-INF/struts-config.xml</param-value>
+   				 </init-param> 				
+ 		       </servlet>
+ 	
+ 	<servlet-mapping>
+ 				<servlet-name>ActionServlet</servlet-name>
+ 				<url-pattern>*.do</url-pattern>
+ 	</servlet-mapping>
+</web-app>

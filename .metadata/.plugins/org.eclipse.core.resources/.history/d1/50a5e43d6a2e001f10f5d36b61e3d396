@@ -1,0 +1,135 @@
+package com.ambow.ects.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.ambow.ecport.exception.ManagerProductException;
+import com.ambow.ects.dao.IProductDao;
+import com.ambow.ects.dao.impl.ProductDaoImpl;
+import com.ambow.ects.entity.Product;
+
+
+
+public class ShowProductServlet 
+{
+
+
+	public  void viewProduct(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		request.setCharacterEncoding("GBK");
+		response.setCharacterEncoding("GBK");
+		
+		IProductDao dao = new ProductDaoImpl();
+		
+		Collection collection = null;
+		try
+		{
+			collection = dao.findAll();
+		}
+		catch (ManagerProductException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		
+		out.println("<html>");
+		out.println("<head>");
+		out.println("<title>Untitled</title>");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("<h2 align=\"center\">Product List view</h2>");
+		out.println("<hr/>");
+		out.println("<table align=\"center\" border=\"1\" width=\"500\" height=\"50\">");
+		out.println("<tr>");
+		out.println("<td>id</td>");
+		out.println("<td>name</td>");
+		out.println("<td>author</td>");
+		out.println("<td>publish</td>");
+		out.println("<td>pages</td>");
+		out.println("<td>images</td>");
+		out.println("<td>basePrice</td>");
+		out.println("<td>descriptions</td>");
+		out.println("<td>category_id</td>");
+		out.println("</tr>");
+
+						
+		Product product = null;
+									
+		for (Object object : collection)
+		{
+			product = (Product)object ;
+			out.println("<tr>");
+			out.println("<td>"+product.getId()+"</td>");
+			out.println("<td>"+product.getName()+"</td>");
+			out.println("<td>"+product.getAuthor()+"</td>");
+			out.println("<td>"+product.getPublish()+"</td>");
+			out.println("<td>"+product.getPages()+"</td>");
+			out.println("<td>"+product.getImages()+"</td>");
+			out.println("<td>"+product.getBasePrice()+"</td>");
+			out.println("<td>"+product.getDescriptions()+"</td>");
+			out.println("<td>"+product.getCategory().getId()+"</td>");
+			out.println("</tr>");
+		}		
+							
+		out.println("</table>");
+		out.println("</body>");
+		out.println("</html>");
+		out.close();		
+	}	
+	
+	public  void showCategory(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException
+	{
+		IProductDao dao = new ProductDaoImpl();
+		
+		Collection<Product> collection= null;
+		try
+		{
+			collection = dao.findAll();
+		}
+		catch (ManagerProductException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("collection", collection);
+		
+		System.out.println(collection);
+		
+		request.getSession().getServletContext().getRequestDispatcher("/category.jsp").forward(request, response);
+	}
+	
+	public  void showProduct(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException
+	{
+		IProductDao dao = new ProductDaoImpl();
+		
+		int productid = Integer.parseInt(request.getParameter("productId"));
+		try
+		{
+			request.setAttribute("product", dao.findById(productid));
+		}
+		catch (ManagerProductException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+						
+		request.getSession().getServletContext().getRequestDispatcher("/details.jsp").forward(request, response);
+	}
+}

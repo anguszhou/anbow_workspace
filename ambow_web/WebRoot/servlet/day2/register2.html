@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>register</title>
+</head>
+<body>
+	<h2 align="center">student register</h2>
+	<hr>
+	<span id="pwd"></span>
+	<form name="form1" method="post" action="/ambowweb/servlet/day2/ParamListServlet2">
+	<table width="600" align="center" border="1" cellpadding="5" cellspacing="0">
+		<tr>
+			<td>username</td>
+			<td><input name="userName" type="text" maxlength="15" size="16" value="root"></td>
+			<td>password</td>
+			<td><input name="password" type="password" maxlength="20"></td>
+		</tr>
+		<tr>
+			<td>gender</td>
+			<td>
+				male<input type="radio" name="gender" value="m" checked="checked">
+				female<input type="radio" name="gender" value="f">
+			</td>
+			<td>province</td>
+			<td>
+				<select name="province">
+					<option value="110000">beijing</option>
+					<option value="120000" selected="selected">jilin</option>
+					<option value="130000">shanghai</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>hobbies</td>
+			<td colspan="3">
+				sleeping<input type="checkbox" name="hobbies" value="s">
+				eating<input type="checkbox" name="hobbies" value="e">
+				playing<input type="checkbox" name="hobbies" value="y">
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">introduction</td>
+			<td colspan="3">
+				<textarea cols="80" rows="6" name="introduction">the guy is so lazy.</textarea>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<center>
+		<input type="submit" value="register">&nbsp;
+		<input type="reset" value="reset">
+	</center>
+	</form>
+</body>
+</html>

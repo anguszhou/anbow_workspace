@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+    <!-- Database connection settings 
+ 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/hibernate</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">1234</property>
+     --> 
+        <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="connection.url">jdbc:oracle:thin:@127.0.0.1:1521:XE</property>
+        <property name="connection.username">system</property>
+        <property name="connection.password">123456</property>
+
+  		<property name="show_sql">true</property>
+  		
+  		<property name="format_sql">true</property>
+  		
+  		
+  		<!-- 
+  		<mapping resource="com/ambow/hibernate/day1/Student.hbm.xml"/>
+   		
+   		<mapping resource="com/ambow/hibernate/day2/Student.hbm.xml"/>
+    	
+    	<mapping resource="com/ambow/hibernate/o2o/Car.hbm.xml"/>
+  		
+  		<mapping resource="com/ambow/hibernate/o2o/Engine.hbm.xml"/>
+  		
+		<mapping resource="com/ambow/hibernate/o2o/Car2.hbm.xml"/>
+  	
+  		<mapping resource="com/ambow/hibernate/o2o/Engine2.hbm.xml"/>  
+    
+    	<mapping resource="com/ambow/hibernate/o2m/Order.hbm.xml"/>
+  	
+  		<mapping resource="com/ambow/hibernate/o2m/Item.hbm.xml"/>  
+    	
+    <mapping resource="com/ambow/hibenate/m2m/AmbowStudent.hbm.xml"/>
+  	
+  		<mapping resource="com/ambow/hibenate/m2m/AmbowCourse.hbm.xml"/>  
+    		 -->
+    		 
+    		 
+    	<mapping resource="com/ambow/hibernate/o2o/Car.hbm.xml"/>
+  		
+  		<mapping resource="com/ambow/hibernate/o2o/Engine.hbm.xml"/>
+    </session-factory>
+
+</hibernate-configuration>
+

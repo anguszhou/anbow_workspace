@@ -1,0 +1,48 @@
+/****
+** allandou
+** 100303
+** jdbc_day2
+**/
+	1:odbc|jdbc
+	2:jdbc驱动的发展
+		1:桥连接(jdbc-odbc-db)
+		2:客户端
+		3:中间件服务器
+		4:本地协议驱动
+	3:jdbc注册驱动方式
+		<1>:Class.forName("com.mysql.jdbc.Driver")
+		<2>:Driver driver = new com.mysql.jdbc.Driver(); 
+			DriverManager.registerDriver(driver);
+		<3>:java -Djdbc.drivers=com.mysql.jdbc.Driver 类名
+	4：jdbc编程步骤
+		<1>:注册驱动
+		<2>:获得连接
+		<3>:创建statement
+		<4>:执行sql语句
+		<5>:处理结果集
+		<6>:关闭资源
+day2:
+		1:txt
+		
+		2:Properties
+Statement	执行静态sql语句
+ 
+PreparedStatement 预编译sql
+
+同构 insert 
+		SQL注入
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,65 @@
+package com.ambow.ects.dao.impl;
+
+import java.sql.Connection;
+import java.util.Collection;
+import java.sql.PreparedStatement;
+import com.ambow.ecport.exception.ManagerOrderException;
+import com.ambow.ects.dao.IOrderDao;
+import com.ambow.ects.entity.Order;
+import com.ambow.ects.util.ConnectionFactory;
+
+
+public class OrderDaoImpl  implements IOrderDao{
+
+	public void addOrder(Order order) throws ManagerOrderException {
+		
+		Connection conn=null;
+		
+		PreparedStatement pst=null;
+		
+		try{
+			conn=ConnectionFactory.getConnection();
+			
+			String sql="insert into myorder(name,cost,user_id,payWay_id,orderStatus) values(?,?,?,?,?)";
+			
+			pst=conn.prepareStatement(sql);
+				
+			pst.setString(1,order.getName());
+			
+			pst.setDouble(2, order.getCost());
+			
+			pst.setInt(3, order.getUser().getId());
+			
+			pst.setInt(4, order.getPayWay().getId());
+			
+			pst.setInt(5, order.getStatus().getId());
+			
+			int i=pst.executeUpdate();
+	    	      	  
+	    	System.out.println(i+"条记录被影响");
+	    	  
+		}catch(Exception e)
+		{
+			
+		}finally
+		{
+			ConnectionFactory.close(null, pst, conn);
+		}
+		
+		
+	}
+
+	public Collection findAll(String user_name) throws ManagerOrderException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Order findById(Integer id) throws ManagerOrderException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+    public static void main(String[] args)
+	{
+		
+	}
+}

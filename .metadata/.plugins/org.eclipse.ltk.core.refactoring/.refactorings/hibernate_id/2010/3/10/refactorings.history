@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements(s) to &apos;hibernateText/src/day9&apos;&#x0D;&#x0A;- Original project: &apos;hibernate_id&apos;&#x0D;&#x0A;- Destination element: &apos;hibernateText/src/day9&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     Engine.hbm.xml&#x0D;&#x0A;     Car.hbm.xml" description="Copy files" destination="/src&lt;day9" element1="src/com/ambow/hibernate/o2o/Engine.hbm.xml" element2="src/com/ambow/hibernate/o2o/Car.hbm.xml" files="2" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" log="src/com/ambow/hibernate/o2o/Car.hbm.xml&#x09;true&#x09;false&#x0A;src/com/ambow/hibernate/o2o/Engine.hbm.xml&#x09;true&#x09;false" policy="org.eclipse.jdt.ui.copyResources" stamp="1267764662500" units="0" version="1.0"/>
+</session>

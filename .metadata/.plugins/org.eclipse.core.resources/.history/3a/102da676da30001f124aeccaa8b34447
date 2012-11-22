@@ -1,0 +1,282 @@
+package com.ambow.ects.dao.impl;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+
+import java.util.Date;
+import java.util.List;
+
+import java.util.Iterator;
+
+
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+
+import com.ambow.ecport.exception.ManagerProductException;
+import com.ambow.ects.dao.IProductDao;
+import com.ambow.ects.entity.Category;
+import com.ambow.ects.entity.Product;
+import com.ambow.ects.util.HibernateUtils;
+
+
+public class ProductDaoImp implements IProductDao {
+
+	public Product findById(Integer id) throws ManagerProductException {
+		Session session = null;
+		Transaction tran = null;
+		Product product = null;
+		try {
+			session = HibernateUtils.getSession();
+			tran = session.beginTransaction();
+			product = (Product) session.get(Product.class, id);
+			tran.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			tran.rollback();
+			throw new ManagerProductException(e.getMessage());
+		} finally {
+			session.close();
+			
+		}
+		return product;
+	}
+
+	public Collection findAll() throws ManagerProductException {
+		Session session = null;
+		Transaction tran = null;
+		Collection list = null;
+		try {
+			session = HibernateUtils.getSession();
+			tran = session.beginTransaction();
+			list = session.createQuery(" from Product ").list();
+			tran.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			tran.rollback();
+			throw new ManagerProductException(e.getMessage());
+		} finally {			
+			session.close();
+			
+		}
+		return list;
+	}
+
+	public Collection find(int start, int max) throws ManagerProductException {
+		Session session = null;
+		Transaction tran = null;
+		Collection list = null;
+		try {
+			session = HibernateUtils.getSession();
+			tran = session.beginTransaction();
+			Query query = session.createQuery(" from Product ");
+			query.setFirstResult(start);
+			query.setMaxResults(max);
+			list = query.list();
+			tran.commit();
+		} catch (Exception e) {
+			tran.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+			
+		}
+		return list;
+
+	}
+
+	public int getTotal() throws ManagerProductException {
+		Session session = null;
+		Transaction tran = null;
+		int total = 0;
+		try {
+			session = HibernateUtils.getSession();
+			tran = session.beginTransaction();
+			total = session.createQuery("From  Product").list().size();			
+			tran.commit();
+		} catch (Exception e) {
+			tran.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+			
+		}
+		return total;
+
+	}
+//此方法用于动态条件查询
+	public Collection find(Product product) throws ManagerProductException {
+		Session session = null;
+		Transaction tran = null;
+		Collection list = null;
+		try {
+			session = HibernateUtils.getSession();
+			tran = session.beginTransaction();
+			Criteria crit = session.createCriteria(Product.class);			
+			if (product.getName().equals("")) {
+				crit.add(Restrictions.like("name", "%"));
+			} else {
+				crit.add(Restrictions.like("name", "%" + product.getName()
+						+ "%"));
+			}			
+			list = crit.list();
+			tran.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			tran.rollback();
+		} finally {
+			session.close();
+			
+		}
+		return list;
+
+	}
+	
+	
+	//商品排行
+	public Collection rankProduct()throws ManagerProductException{
+		Session session = null;
+		Transaction tran = null;
+		Collection list = null;
+		try {
+			session = HibernateUtils.getSession();
+			tran = session.beginTransaction();
+			list = session.createQuery("from Product order by saleVolume desc").setFirstResult(1).setMaxResults(10).list();
+			tran.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			tran.rollback();
+			throw new ManagerProductException(e.getMessage());
+		} finally {			
+			session.close();
+			return list;
+		}
+	}
+
+	
+
+	public Collection findByDiscount() throws ManagerProductException {
+		Session session = null;
+		Transaction tran = null;
+		Collection list = null;
+		
+		try{
+			session = HibernateUtils.getSession();
+			tran = session.beginTransaction();
+			String hql = "from Product product where product.discounted = 1";
+			list = session.createQuery(hql).list();
+			tran.commit();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			tran.rollback();
+		}finally{
+			session.close();
+		}
+		
+		return list;
+	}
+
+
+
+	public Collection hotCategory() throws ManagerProductException
+	{
+		Session session = HibernateUtils.getSession();
+		
+		session.getTransaction().begin();
+		
+		Collection list = new ArrayList();
+		
+		
+		  String hql = "select product.category from Product product right join fetch product.category group by product.category.id  order by sum(product.saleVolume)desc";		  
+		  list = session.createQuery(hql).setFirstResult(1).setMaxResults(10).list();
+		  System.out.println(list.size());
+		  session.getTransaction().commit();
+		  try 
+			{ 	
+	        }/*catch(Exception e)
+		{
+			session.getTransaction().rollback();
+		}*/finally
+		{
+			session.close();
+			return list;
+		}
+		
+	}
+	
+	public static void main(String[] args)
+	{
+		IProductDao  dao = new ProductDaoImp();
+		
+		try
+		{
+			Collection  list=dao.hotCategory();
+			for (Object object : list)
+			{
+				Category c = (Category)object;
+				System.out.println(c.getName());
+			}
+		}
+		catch (ManagerProductException e)
+		{
+
+			e.printStackTrace();
+		}
+	}
+
+
+	public Collection findByPromoted() throws ManagerProductException {
+		Session session = null;
+		Transaction tran = null;
+		Collection list = null;
+		
+		try{
+			session = HibernateUtils.getSession();
+			tran = session.beginTransaction();
+			String hql = "from Product product where product.promoted = 1";
+			list = session.createQuery(hql).list();
+			tran.commit();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			tran.rollback();
+		}finally{
+			session.close();
+		}
+		
+		return list;
+	}
+
+	public Collection findByTime() throws ManagerProductException {
+		Session session = null;
+		Transaction tran = null;
+		Collection list = null;
+		
+		try{
+			session = HibernateUtils.getSession();
+			tran = session.beginTransaction();
+			Date date = new Date();
+			int i = date.getYear();
+			System.out.println(i);
+			
+			String hql = "from Product product where Year(product.time) =:time";  //时间比较？
+			
+			list = session.createQuery(hql).setInteger("time", i+1900).list();
+			tran.commit();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			tran.rollback();
+		}finally{
+			session.close();
+		}
+		
+		return list;
+	}
+
+}

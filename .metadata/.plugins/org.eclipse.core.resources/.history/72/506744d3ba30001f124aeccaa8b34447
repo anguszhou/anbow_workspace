@@ -1,0 +1,133 @@
+package com.ambow.ects.web;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.actions.MappingDispatchAction;
+
+import com.ambow.ects.dao.IProductDao;
+import com.ambow.ects.dao.impl.ProductDaoImp;
+import com.ambow.ects.util.PageController;
+
+public class ProductHandler extends MappingDispatchAction  {
+	
+	public ActionForward home(ActionMapping mapping, ActionForm form,
+			HttpServletRequest req, HttpServletResponse response)
+			throws Exception {
+		
+		
+		//此行不能少
+		req.setAttribute("first", false);
+		return mapping.findForward("index");
+	}
+	
+	public ActionForward detail(ActionMapping mapping, ActionForm form,
+			HttpServletRequest req, HttpServletResponse response)
+			throws Exception {
+		
+		int productId = Integer.parseInt(req.getParameter("productId"));
+		req.setAttribute("productDetail", new ProductDaoImp().findById(productId));
+				
+		return mapping.findForward("detail");
+	}
+	
+	public ActionForward list(ActionMapping mapping, ActionForm form,
+			HttpServletRequest req, HttpServletResponse response)
+			throws Exception {
+		
+		req.setAttribute("productList",new ProductDaoImp().findAll());		
+		
+		return mapping.findForward("List");
+	}
+	
+	public ActionForward pageControl(ActionMapping mapping, ActionForm form,
+			HttpServletRequest req, HttpServletResponse response)
+			throws Exception {
+		
+		IProductDao dao = new ProductDaoImp();
+		PageController pc =(PageController) req.getSession().getAttribute("pageControl");
+		if(pc == null)
+		{			
+			pc = new PageController(dao.getTotal(),1,3);
+			req.getSession().setAttribute("pageController", pc);
+		}	
+		int destPage = Integer.parseInt(req.getParameter("destId"));
+		
+		pc.setPageController(pc.getTotalRowsAmount(), destPage);		
+		pc.setData(dao.find((destPage-1)*pc.getPageSize(), pc.getPageSize()));
+		
+		
+		StringBuffer selector = new StringBuffer();
+		int start = destPage>=6?destPage-5:1;
+		int end = destPage+5>=pc.getTotalPages()?pc.getTotalPages():destPage+5;
+		for (int i=start;i<destPage;i++)		
+			selector.append("<option value='").append(i).append("'>").append(i).append("</option>");
+		selector.append("<option selected='selected'>").append(destPage).append("</option>");
+		for (int i=destPage+1;i<=end;i++)		
+			selector.append("<option value='").append(i).append("'>").append(i).append("</option>");
+		
+		req.setAttribute("pageSelector",selector.toString() );
+		
+		return mapping.findForward("List");
+	}
+	
+	/*public ActionForward list(ActionMapping mapping, ActionForm form,
+			HttpServletRequest req, HttpServletResponse response)
+			throws Exception {
+		IProductDao dao = new ProductDaoImp();
+		PageController pc =(PageController) req.getSession().getAttribute("pageControl");
+		if(pc == null)
+		{			
+			pc = new PageController(dao.getTotal(),1,3);
+			req.getSession().setAttribute("pageController", pc);
+		}	
+		
+		pc.setData(dao.find((pc.getCurrentPage()-1)*pc.getPageSize(), pc.getPageSize()));
+		
+		StringBuffer selector = new StringBuffer("<option value='1' selected='selected'>").append(1).append("</option>");
+		int end = pc.getTotalPages()>=11?10:pc.getTotalPages()-1;
+		for (int i=0;i<end;i++)		
+			selector.append("<option value='").append(i+2).append("'>").append(i+2).append("</option>");
+			
+		req.setAttribute("pageSelector",selector.toString() );		
+		
+		return mapping.findForward("List");
+	}
+	
+	public ActionForward pageControl(ActionMapping mapping, ActionForm form,
+			HttpServletRequest req, HttpServletResponse response)
+			throws Exception {
+		
+		IProductDao dao = new ProductDaoImp();
+		PageController pc =(PageController) req.getSession().getAttribute("pageControl");
+		if(pc == null)
+		{			
+			pc = new PageController(dao.getTotal(),1,3);
+			req.getSession().setAttribute("pageController", pc);
+		}	
+		int destPage = Integer.parseInt(req.getParameter("destId"));
+		
+		pc.setPageController(pc.getTotalRowsAmount(), destPage);		
+		pc.setData(dao.find((destPage-1)*pc.getPageSize(), pc.getPageSize()));
+		
+		
+		StringBuffer selector = new StringBuffer();
+		int start = destPage>=6?destPage-5:1;
+		int end = destPage+5>=pc.getTotalPages()?pc.getTotalPages():destPage+5;
+		for (int i=start;i<destPage;i++)		
+			selector.append("<option value='").append(i).append("'>").append(i).append("</option>");
+		selector.append("<option selected='selected'>").append(destPage).append("</option>");
+		for (int i=destPage+1;i<=end;i++)		
+			selector.append("<option value='").append(i).append("'>").append(i).append("</option>");
+		
+		req.setAttribute("pageSelector",selector.toString() );
+		
+		return mapping.findForward("List");
+	}*/
+	
+}
